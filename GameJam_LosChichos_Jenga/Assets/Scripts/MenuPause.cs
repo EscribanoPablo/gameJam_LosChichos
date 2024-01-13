@@ -11,6 +11,13 @@ public class MenuPause : MonoBehaviour
 
     public KeyCode m_PauseKey;
 
+    GameController m_GameController;
+
+    private void Awake()
+    {
+        m_GameController = FindObjectOfType<GameController>();
+    }
+
     private void Start()
     {
         m_PanelPause.SetActive(false);
@@ -40,7 +47,9 @@ public class MenuPause : MonoBehaviour
 
     public void RestartGame()
     {
-        //GameController.RestartLevel();
+        m_PanelPause.SetActive(false);
+        m_GameController.RestartGame();
+        Time.timeScale = 1;
         //SceneManager.LoadSceneAsync("nuevatorre");
     }
 
