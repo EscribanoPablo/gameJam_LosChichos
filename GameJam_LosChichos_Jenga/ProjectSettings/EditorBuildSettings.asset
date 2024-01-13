@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: "Assets/Scenes/Men\xFA.unity"
+    guid: 153ae6e2978f8bd428911a049453d2a3
+  - enabled: 1
+    path: Assets/Scenes/nuevatorre.unity
+    guid: bafd68848c6968147b035888047639b7
   m_configObjects: {}
