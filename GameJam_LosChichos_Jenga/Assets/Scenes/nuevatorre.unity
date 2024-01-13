@@ -5372,6 +5372,7 @@ MonoBehaviour:
   roundTime: 180
   pointsText: {fileID: 734070465}
   timeText: {fileID: 1333930337}
+  m_JengaCubeList: []
 --- !u!4 &1896107479
 Transform:
   m_ObjectHideFlags: 0
