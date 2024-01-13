@@ -13,11 +13,14 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI timeText;
 
+    public List<JengaCube> m_JengaCubeList;
+
     private void Start()
     {
         // esto es para probarrrr
         currentTime = roundTime;
         roundActive = true;
+
     }
     public void AddPoint()
     {
@@ -72,4 +75,17 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    public void RestartGame()
+    {
+        ResetRound();
+
+        foreach (JengaCube l_JengaCube in m_JengaCubeList)
+        {
+            l_JengaCube.RestartGame();
+        }
+
+        roundActive = true;
+    }
+
 }
