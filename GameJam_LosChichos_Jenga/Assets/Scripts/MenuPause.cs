@@ -56,6 +56,7 @@ public class MenuPause : MonoBehaviour
     public void ReturnMainMenu()
     {
         SceneManager.LoadSceneAsync("Menú");
+        RestartGame();
     }
 
 }
