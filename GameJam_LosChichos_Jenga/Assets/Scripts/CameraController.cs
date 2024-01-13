@@ -12,11 +12,6 @@ public class CameraController : MonoBehaviour
     public float m_MaxPitch;
     public float m_OffsetY = 3f;
 
-    [Header("DebugInput")]
-
-    bool m_AngleLocked = false;
-    bool m_AimLocked = true;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
