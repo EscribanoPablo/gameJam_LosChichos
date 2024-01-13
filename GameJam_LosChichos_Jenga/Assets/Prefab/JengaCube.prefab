@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2117772988182888657}
   - component: {fileID: 1424628249477580652}
   - component: {fileID: 5207138563191300286}
+  - component: {fileID: 8124429699694359713}
   m_Layer: 0
   m_Name: JengaCube
-  m_TagString: Untagged
+  m_TagString: JengaCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,3 +134,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8124429699694359713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564901034062717967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de85b623cf1dd3a41a860f0dbbd3ba33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -12,6 +12,11 @@ public class CameraController : MonoBehaviour
     public float m_MaxPitch;
     public float m_OffsetY = 3f;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void LateUpdate()
     {
         m_WhereToLook = new Vector3 (m_LookAt.position.x,m_LookAt.position.y+m_OffsetY,m_LookAt.position.z);
