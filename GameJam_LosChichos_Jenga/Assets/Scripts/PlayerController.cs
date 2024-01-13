@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour
     public float m_Speed = 5.0f;
     Vector3 m_Rotation = new Vector3();
     public float m_AngularSpeed = 0.25f;
+    Rigidbody m_RigidBody;
+    Vector3 m_PlayerPosition;
 
     private void Start()
     {
+        m_PlayerPosition = transform.position;
         m_Rotation = Vector3.zero;
+        m_RigidBody = gameObject.GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -35,7 +39,7 @@ public class PlayerController : MonoBehaviour
             //l_Desiredforward = new Vector3(0, 0, -1);
             l_DesiredForward = -1;
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             //l_Desiredforward = new Vector3(-1, 0, 0);
             l_DesiredRight = -1;
@@ -64,9 +68,10 @@ public class PlayerController : MonoBehaviour
             m_Rotation += new Vector3(0, -m_AngularSpeed, 0);
         }
 
-        transform.rotation = Quaternion.Euler(m_Rotation.x, m_Rotation.y, 0.0f);
+        //transform.rotation = Quaternion.Euler(m_Rotation.x, m_Rotation.y, 0.0f);
         //transform.position = transform.position + l_Desiredforward * m_Speed * Time.deltaTime;
-        transform.position += transform.forward * l_DesiredForward * m_Speed * Time.deltaTime;
-        transform.position += transform.right * l_DesiredRight * m_Speed * Time.deltaTime;
+        m_PlayerPosition += transform.forward * l_DesiredForward * m_Speed * Time.deltaTime;
+        m_PlayerPosition += transform.right * l_DesiredRight * m_Speed * Time.deltaTime;
+        m_RigidBody.Move(m_PlayerPosition, Quaternion.Euler(m_Rotation.x, m_Rotation.y, 0.0f));
     }
 }
