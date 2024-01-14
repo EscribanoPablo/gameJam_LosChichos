@@ -60,8 +60,9 @@ public class MenuPause : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        SceneManager.LoadSceneAsync("Menú");
         RestartGame();
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadSceneAsync("Menú");
     }
 
 }
