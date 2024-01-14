@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
         currentTime = roundTime;
         roundActive = true;
         highscore = m_HighScoreManager.value;
+        SetPoints();
 
     }
     public void AddPoint()
