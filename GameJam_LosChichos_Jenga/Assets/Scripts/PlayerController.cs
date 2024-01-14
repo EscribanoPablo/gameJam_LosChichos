@@ -62,13 +62,11 @@ public class PlayerController : MonoBehaviour
         {
             //l_Desiredforward = new Vector3(0, 0, 1);
             m_DesiredForward = +1;
-            m_Speed += m_Acceleration * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             //l_Desiredforward = new Vector3(0, 0, -1);
             m_DesiredForward = -1;
-            m_Speed += m_Acceleration * Time.deltaTime;
         }
         else if(m_DesiredForward > 0)
         {
@@ -91,13 +89,12 @@ public class PlayerController : MonoBehaviour
         {
             //l_Desiredforward = new Vector3(-1, 0, 0);
             m_DesiredRight = -1;
-            m_Speed += m_Acceleration * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.D))
         {
             //l_Desiredforward = new Vector3(1, 0, 0);
             m_DesiredRight = +1;
-            m_Speed += m_Acceleration * Time.deltaTime;
+
         }
         else if (m_DesiredRight > 0)
         {
@@ -117,6 +114,10 @@ public class PlayerController : MonoBehaviour
         }
         //l_Desiredforward.Normalize();
 
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            m_Speed += m_Acceleration * Time.deltaTime;
+        }
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
         {
             m_Speed = m_BaseSpeed;
@@ -155,8 +156,11 @@ public class PlayerController : MonoBehaviour
         //}
         //else
         //{
-            m_PlayerPosition += transform.forward * m_DesiredForward * m_Speed * Time.deltaTime;
-            m_PlayerPosition += transform.right * m_DesiredRight * m_Speed * Time.deltaTime;
+        Vector3 m_Direction = transform.forward * m_DesiredForward;
+        m_Direction += transform.right * m_DesiredRight;
+        m_Direction.Normalize();
+        Debug.Log(m_Direction);
+        m_PlayerPosition += m_Direction * m_Speed * Time.deltaTime;
             //m_NoiseCounter += 1.0f * Time.deltaTime;
         //}
 

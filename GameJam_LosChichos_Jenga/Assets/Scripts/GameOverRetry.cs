@@ -22,21 +22,11 @@ public class GameOverRetry : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-        if (gameObject.activeSelf == true)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
 
     public void ShowGameOverHud(string l_GameOverType)
     {
         gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         m_GameOverType.text = l_GameOverType;
         Debug.Log("gameOver because: " + l_GameOverType);
     }
@@ -44,6 +34,7 @@ public class GameOverRetry : MonoBehaviour
     public void Restart()
     {
         m_GameController.RestartGame();
+        Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
     }
 
