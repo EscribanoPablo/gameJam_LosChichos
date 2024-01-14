@@ -41,6 +41,7 @@ public class GameOverRetry : MonoBehaviour
     public void ReturnMainMenu()
     {
         Restart();
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadSceneAsync("Menú");
     }
 
