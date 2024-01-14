@@ -6,7 +6,12 @@ public class JengaCube : MonoBehaviour
 {
     Vector3 m_StartPosition;
     Quaternion m_StartRotation;
+    Rigidbody m_RigidBody;
 
+    private void Awake()
+    {
+       m_RigidBody = gameObject.GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
@@ -23,5 +28,6 @@ public class JengaCube : MonoBehaviour
     {
         transform.position = m_StartPosition;
         transform.rotation = m_StartRotation;
+        m_RigidBody.velocity = Vector3.zero;
     }
 }
