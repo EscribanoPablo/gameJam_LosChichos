@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     bool roundActive;
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI timeText;
+    public TextMeshProUGUI m_HighScoreText;
 
     GameOverRetry m_GameOverRetry;
     public PlayerController m_PlayerController;
@@ -33,12 +34,14 @@ public class GameController : MonoBehaviour
     public void AddPoint()
     {
         playerPoints++;
+        SetHighScore();
         SetPoints();
-    }
+    }   
 
     private void SetPoints()
     {
         pointsText.text = playerPoints.ToString();
+        m_HighScoreText.text = highscore.ToString();
     }
 
     private void SetTime()
@@ -63,13 +66,16 @@ public class GameController : MonoBehaviour
 
     public void RoundFinished()
     {
+        SetHighScore();
+    }
+
+    private void SetHighScore()
+    {
         if (highscore < playerPoints)
         {
             highscore = playerPoints;
             //algo enplan congratulations new highscore!!!
         }
-
-        ResetRound();
     }
 
     private void Update()
@@ -84,6 +90,7 @@ public class GameController : MonoBehaviour
                 m_GameOverRetry.ShowGameOverHud("Time Finished");
             }
         }
+
     }
 
     public void RestartGame()
