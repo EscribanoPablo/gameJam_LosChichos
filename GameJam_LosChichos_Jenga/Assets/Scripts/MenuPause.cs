@@ -25,9 +25,13 @@ public class MenuPause : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(m_PauseKey))
+        if (m_GameController.GetRoundActive())
         {
-            PauseGame();
+
+            if (Input.GetKeyDown(m_PauseKey))
+            {
+                PauseGame();
+            }
         }
     }
 
@@ -50,6 +54,7 @@ public class MenuPause : MonoBehaviour
         m_PanelPause.SetActive(false);
         m_GameController.RestartGame();
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
         //SceneManager.LoadSceneAsync("nuevatorre");
     }
 

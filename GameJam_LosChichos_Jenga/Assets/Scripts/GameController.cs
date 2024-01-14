@@ -66,6 +66,7 @@ public class GameController : MonoBehaviour
 
     public void RoundFinished()
     {
+        roundActive = false;
         SetHighScore();
     }
 

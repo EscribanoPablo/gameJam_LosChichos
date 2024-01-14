@@ -118,10 +118,14 @@ public class PlayerController : MonoBehaviour
         {
             m_Speed += m_Acceleration * Time.deltaTime;
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        else
         {
             m_Speed = m_BaseSpeed;
         }
+        /*if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        {
+            m_Speed = m_BaseSpeed;
+        }*/
 
         if (m_Speed > m_MaxSpeed)
             m_Speed = m_MaxSpeed;
@@ -160,6 +164,7 @@ public class PlayerController : MonoBehaviour
         m_Direction += transform.right * m_DesiredRight;
         m_Direction.Normalize();
         Debug.Log(m_Direction);
+        Debug.Log("Speed: "+m_Speed);
         m_PlayerPosition += m_Direction * m_Speed * Time.deltaTime;
             //m_NoiseCounter += 1.0f * Time.deltaTime;
         //}
@@ -173,5 +178,6 @@ public class PlayerController : MonoBehaviour
         transform.position = m_StartPosition;
         transform.rotation = m_StartRotation;
         m_PlayerPosition = m_StartPosition;
+        m_Rotation = m_StartRotation.eulerAngles;
     }
 }
