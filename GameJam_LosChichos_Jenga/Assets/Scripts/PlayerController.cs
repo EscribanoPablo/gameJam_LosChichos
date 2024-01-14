@@ -17,11 +17,11 @@ public class PlayerController : MonoBehaviour
     float m_DesiredForward;
     float m_DesiredRight;
 
-    [Range(0, 5.0f)]
-    public float m_MaxNoise;
-    Vector3 m_HandNoise;
-    float m_NoiseCounter = 0;
-    public float m_NoiseCounterMaxTime;
+    //[Range(0, 5.0f)]
+    //public float m_MaxNoise;
+    //Vector3 m_HandNoise;
+    //float m_NoiseCounter = 0;
+    //public float m_NoiseCounterMaxTime;
 
     private void Start()
     {
@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
         //m_DesiredForward = 0;
         //m_DesiredRight = 0;
 
-        m_HandNoise = new Vector3(Random.Range(0, 1.0f), Random.Range(0, 1.0f), Random.Range(0, 1.0f));
-        m_HandNoise.Normalize();
+        //m_HandNoise = new Vector3(Random.Range(0, 1.0f), Random.Range(0, 1.0f), Random.Range(0, 1.0f));
+        //m_HandNoise.Normalize();
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -116,19 +116,19 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            m_Rotation += new Vector3(m_AngularSpeed, 0, 0);
+            m_Rotation += new Vector3(-m_AngularSpeed, 0, 0);
         }
         else if (Input.GetKey(KeyCode.DownArrow))
         {
-            m_Rotation += new Vector3(-m_AngularSpeed, 0, 0);
+            m_Rotation += new Vector3(m_AngularSpeed, 0, 0);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            m_Rotation += new Vector3(0, m_AngularSpeed, 0);
+            m_Rotation += new Vector3(0, -m_AngularSpeed, 0);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            m_Rotation += new Vector3(0, -m_AngularSpeed, 0);
+            m_Rotation += new Vector3(0, m_AngularSpeed, 0);
         }
 
         //transform.rotation = Quaternion.Euler(m_Rotation.x, m_Rotation.y, 0.0f);
@@ -137,17 +137,17 @@ public class PlayerController : MonoBehaviour
         //m_PlayerPosition += transform.forward * l_DesiredForward * m_Speed * Time.deltaTime;
         //m_PlayerPosition += transform.right * l_DesiredRight * m_Speed * Time.deltaTime;
 
-        if (m_NoiseCounter >= m_NoiseCounterMaxTime)
-        {
-            m_PlayerPosition += (m_HandNoise * m_MaxNoise) * m_Speed * Time.deltaTime;
-            m_NoiseCounter = 0;
-        }
-        else
-        {
+        //if (m_NoiseCounter >= m_NoiseCounterMaxTime)
+        //{
+        //    m_PlayerPosition += (m_HandNoise * m_MaxNoise) * m_Speed * Time.deltaTime;
+        //    m_NoiseCounter = 0;
+        //}
+        //else
+        //{
             m_PlayerPosition += transform.forward * m_DesiredForward * m_Speed * Time.deltaTime;
             m_PlayerPosition += transform.right * m_DesiredRight * m_Speed * Time.deltaTime;
-            m_NoiseCounter += 1.0f * Time.deltaTime;
-        }
+            //m_NoiseCounter += 1.0f * Time.deltaTime;
+        //}
 
         m_RigidBody.Move(m_PlayerPosition, Quaternion.Euler(m_Rotation.x, m_Rotation.y, 0.0f));
     }
