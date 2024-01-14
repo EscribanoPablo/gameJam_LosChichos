@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadSceneAsync("nuevatorrePablo");
+        SceneManager.LoadSceneAsync("nuevatorre");
     }
 
     public void Quit()

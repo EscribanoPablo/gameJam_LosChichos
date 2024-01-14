@@ -6,6 +6,9 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
+    Vector3 m_StartPosition;
+    Quaternion m_StartRotation;
+
     public float m_BaseSpeed = 5.0f;
     float m_Speed;
     public float m_MaxSpeed = 5.0f;
@@ -17,6 +20,8 @@ public class PlayerController : MonoBehaviour
     float m_DesiredForward;
     float m_DesiredRight;
 
+    public GameController m_GameController;
+
     //[Range(0, 5.0f)]
     //public float m_MaxNoise;
     //Vector3 m_HandNoise;
@@ -25,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        m_StartPosition = transform.position;
+        m_StartRotation = transform.rotation;
+
         m_PlayerPosition = transform.position;
         m_Rotation = Vector3.zero;
         m_RigidBody = gameObject.GetComponent<Rigidbody>();
@@ -34,7 +42,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        PlayerMovement();
+        if (m_GameController.GetRoundActive())
+        {
+            PlayerMovement();
+        }
     }
 
     private void PlayerMovement()
@@ -150,5 +161,13 @@ public class PlayerController : MonoBehaviour
         //}
 
         m_RigidBody.Move(m_PlayerPosition, Quaternion.Euler(m_Rotation.x, m_Rotation.y, 0.0f));
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("Player restart");
+        transform.position = m_StartPosition;
+        transform.rotation = m_StartRotation;
+        m_PlayerPosition = m_StartPosition;
     }
 }

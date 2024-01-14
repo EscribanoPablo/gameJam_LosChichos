@@ -7,14 +7,22 @@ public class GameController : MonoBehaviour
 {
     int playerPoints;
     public float roundTime;
+    public float CurrentTime => currentTime;
     float currentTime;
     int highscore;
     bool roundActive;
     public TextMeshProUGUI pointsText;
     public TextMeshProUGUI timeText;
 
-    public List<JengaCube> m_JengaCubeList;
+    GameOverRetry m_GameOverRetry;
+    public PlayerController m_PlayerController;
 
+    public List<JengaCube> m_JengaCubeList;
+    private void Awake()
+    {
+        m_GameOverRetry = FindObjectOfType<GameOverRetry>();
+        //m_PlayerController = FindObjectOfType<PlayerController>();
+    }
     private void Start()
     {
         // esto es para probarrrr
@@ -60,6 +68,7 @@ public class GameController : MonoBehaviour
             highscore = playerPoints;
             //algo enplan congratulations new highscore!!!
         }
+
         ResetRound();
     }
 
@@ -72,6 +81,7 @@ public class GameController : MonoBehaviour
             if (currentTime <= 0)
             {
                 RoundFinished();
+                m_GameOverRetry.ShowGameOverHud("Time Finished");
             }
         }
     }
@@ -79,9 +89,10 @@ public class GameController : MonoBehaviour
     public void RestartGame()
     {
         ResetRound();
-
+        m_PlayerController.RestartGame();
         foreach (JengaCube l_JengaCube in m_JengaCubeList)
         {
+            Debug.Log("restart");
             l_JengaCube.RestartGame();
         }
 

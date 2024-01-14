@@ -7,6 +7,13 @@ public class PieceFallCounter : MonoBehaviour
     bool timerActive;
     public GameController gameController;
 
+    GameOverRetry m_GameOverRetry;
+
+    private void Awake()
+    {
+        m_GameOverRetry = FindObjectOfType<GameOverRetry>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (gameController.GetRoundActive())
@@ -16,6 +23,7 @@ public class PieceFallCounter : MonoBehaviour
                 if (timerActive)
                 {
                     gameController.RoundFinished();
+                    m_GameOverRetry.ShowGameOverHud("You Failed");
                     timerActive = false;
                 }
                 else
