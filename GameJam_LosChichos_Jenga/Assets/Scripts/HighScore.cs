@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HighScore : MonoBehaviour
 {
-    int value;
+    public int value;
     bool sameFound;
 
     void Start()

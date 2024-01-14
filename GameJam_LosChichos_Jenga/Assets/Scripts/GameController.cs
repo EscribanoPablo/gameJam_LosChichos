@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
 {
     int playerPoints;
     public float roundTime;
-    public float CurrentTime => currentTime;
     float currentTime;
     int highscore;
     bool roundActive;
@@ -15,6 +14,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI m_HighScoreText;
 
+    HighScore m_HighScoreManager;
     GameOverRetry m_GameOverRetry;
     public PlayerController m_PlayerController;
 
@@ -27,8 +27,10 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         // esto es para probarrrr
+        m_HighScoreManager = GameObject.FindGameObjectWithTag("HighScore").GetComponent<HighScore>();
         currentTime = roundTime;
         roundActive = true;
+        highscore = m_HighScoreManager.value;
 
     }
     public void AddPoint()
@@ -75,6 +77,7 @@ public class GameController : MonoBehaviour
         if (highscore < playerPoints)
         {
             highscore = playerPoints;
+            m_HighScoreManager.value = highscore;
             //algo enplan congratulations new highscore!!!
         }
     }

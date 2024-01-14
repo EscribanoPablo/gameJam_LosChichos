@@ -6,6 +6,7 @@ TagManager:
   tags:
   - JengaCube
   - Musiqueja
+  - HighScore
   layers:
   - Default
   - TransparentFX
